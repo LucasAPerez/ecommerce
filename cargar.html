@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alta, Baja, Modificacion</title>
+    <!-- Agregar los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .formulario {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        function mostrarOpciones(checkbox) {
+            var checkboxes = document.getElementsByClassName("checkbox-opcion");
+            var opciones = document.getElementsByClassName("opciones");
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i] !== checkbox) {
+                    checkboxes[i].checked = false;
+                    opciones[i].style.display = "none";
+                }
+            }
+
+            if (checkbox.checked) {
+                var opcionesMostrar = checkbox.dataset.opciones;
+                document.getElementById(opcionesMostrar).style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col">
+                <div class="formulario">
+                    <h1 class="mb-4">Alta, Baja, Modificacion</h1>
+                    <form action="modelos/mod_cargar.php" method="post">
+                        <div class="form-check">
+                            <input class="form-check-input checkbox-opcion" type="checkbox" id="cargar" name="cargar" data-opciones="opciones-cargar"  onchange="mostrarOpciones(this)">
+                            <label class="form-check-label" for="cargar">
+                                Cargar
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input checkbox-opcion" type="checkbox" id="modificar" data-opciones="opciones-modificar"  onchange="mostrarOpciones(this)">
+                            <label class="form-check-label" for="modificar" name="modificar">
+                                Modificar
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input checkbox-opcion" type="checkbox" id="borrar" data-opciones="opciones-borrar"  name="borrar" onchange="mostrarOpciones(this)">
+                            <label class="form-check-label" for="borrar">
+                                Borrar
+                            </label>
+                        </div>
+
+                        <div id="opciones-cargar" class="opciones" style="display: none;">
+                            <h4 class="mt-4">Opciones para Cargar</h4>
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" >
+                            </div>
+                            <div class="form-group">
+                                <label for="descripcion">Descripcion:</label>
+                                <input type="text" class="form-control" id="descripcion" name="descripcion" >
+                            </div>
+                            <div class="form-group">
+                                <label for="precio">Precio:</label>
+                                <input type="text" class="form-control" id="precio" name="precio" >
+                            </div>
+                            <div class="form-group">
+                                <label for="id-categoria">ID de Categoria:</label>
+                                <input type="text" class="form-control" id="idcategoria" name="idcategoria" >
+                            </div>
+                            <div class="form-group">
+                                <label for="idcategoria">Cantidad en stock</label>
+                                <input type="text" class="form-control" id="stock" name="stock" >
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar Cargar</button>
+                        </div>
+
+                        <div id="opciones-modificar" class="opciones" style="display: none;">
+                            <h4 class="mt-4">Opciones para Modificar</h4>
+                            <div class="form-group">
+                                <label for="id-modificar">ID a modificar:</label>
+                                <input type="text" class="form-control" id="idmodificar" name="idmodificar" >
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre-modificar">Nombre:</label>
+                                <input type="text" class="form-control" id="nombremodificar" name="nombre-modificar" >
+                            </div>
+                            <div class="form-group">
+                                <label for="descripcion-modificar">Descripcion:</label>
+                                <input type="text" class="form-control" id="descripcionmodificar" name="descripcion-modificar" >
+                            </div>
+                            <div class="form-group">
+                                <label for="precio-modificar">Precio:</label>
+                                <input type="text" class="form-control" id="preciomodificar" name="precio-modificar" >
+                            </div>
+                            <div class="form-group">
+                                <label for="stock-modificar">Stock:</label>
+                                <input type="text" class="form-control" id="stockmodificar" name="stockmodificar" >
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar Modificar</button>
+                        </div>
+
+                        <div id="opciones-borrar" class="opciones" style="display: none;">
+                            <h4 class="mt-4">Opcion para Borrar</h4>
+                            <div class="form-group">
+                                <label for="id-borrar">ID a borrar:</label>
+                                <input type="text" class="form-control" id="id-borrar" name="idborrar" >
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar Borrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
