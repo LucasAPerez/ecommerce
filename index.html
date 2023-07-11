@@ -1,19 +1,6 @@
-<?php
-
-require 'config/config.php';
-require 'config/database.php';
-$db = new Database();
-$con = $db->conectar();
-
-$sql = $con->prepare("SELECT id, nombre, precio FROM ecomercio WHERE activo=1");
-$sql->execute();
-$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-?>
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,7 +34,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                     <form class="form-inline my-2 my-md-0">
                        <input class="form-control" type="text" placeholder="Search">
                     </form>
-                    <a href="carrito.php" class="btn btn-primary">Carrito <span class="num_cart" class="badge bg-secondary"></span></a>
+                    <a href="carrito.php" class="btn btn-primary">Carrito <span class="num_cart" class="badge bg-secondary">x</span></a>
                 </div>
             </div>
         </div>

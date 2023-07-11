@@ -38,7 +38,7 @@
             <div class="col">
                 <div class="formulario">
                     <h1 class="mb-4">Alta, Baja, Modificacion</h1>
-                    <form action="modelos/mod_cargar.php" method="post">
+                    <form action="modelos/mod_cargar.php" method="post" id="formulario">
                         <div class="form-check">
                             <input class="form-check-input checkbox-opcion" type="checkbox" id="cargar" name="cargar" data-opciones="opciones-cargar"  onchange="mostrarOpciones(this)">
                             <label class="form-check-label" for="cargar">
@@ -121,5 +121,18 @@
             </div>
         </div>
     </div>
+    <button id="enviarPeticion" type="button">Enviar</button>
+    <script>
+        const btn = document.getElementById("enviarPeticion")
+        btn.addEventListener("click", (e) => {
+            const inputs = document.querySelectorAll("input")
+            fetch("http://localhost/proyecto/ecommerce/modelos/productos/mod_catalogo.php")
+            .then(res => res.json())
+            .then(res => console.log(res))
+            // inputs.forEach(input => {
+            //     console.log(input.value)
+            // })
+        })
+    </script>
 </body>
 </html>
